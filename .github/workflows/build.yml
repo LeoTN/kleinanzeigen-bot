@@ -286,7 +286,8 @@ jobs:
 
 
     - name: Publish to TestPyPI
-      if: github.repository_owner == 'Second-Hand-Friends' && github.ref_name == 'main' && matrix.PUBLISH_RELEASE && !env.ACT
+      # REMOVE [LeoTN > Second-Hand-Friends]
+      if: github.repository_owner == 'LeoTN' && github.ref_name == 'main' && matrix.PUBLISH_RELEASE && startsWith(matrix.os, 'ubuntu') && !env.ACT
       run: |
         set -eux
 
