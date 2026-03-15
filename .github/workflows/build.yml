@@ -285,6 +285,13 @@ jobs:
         docker push ghcr.io/$image_name
 
 
+    - name: Publish to TestPyPI
+      if: github.repository_owner == 'Second-Hand-Friends' && github.ref_name == 'main' && matrix.PUBLISH_RELEASE && !env.ACT
+      run: |
+        set -eux
+
+        pdm publish --repository https://test.pypi.org/legacy/
+
     - name: Collect coverage reports
       uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
       if: (github.ref_name == 'main' || github.event_name == 'pull_request') && !env.ACT
