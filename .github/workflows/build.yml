@@ -58,6 +58,8 @@ jobs:
     if: github.event_name != 'push' || github.ref_name == 'main' || github.ref_name == 'release' || github.repository != 'Second-Hand-Friends/kleinanzeigen-bot'
     permissions:
       packages: write
+      # Required for OIDC authentication with PyPI.
+      id-token: write
 
     strategy:
       fail-fast: false
